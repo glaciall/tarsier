@@ -61,24 +61,42 @@ public final class Painter
 		
 	}
 	
-	public void drawCircle(int x, int y, int radius)
+	// TODO: 像素点比较密集的地方，可以使用低透明度的颜色来平滑化，待测试
+	public void drawCircle(int rx, int ry, int radius)
 	{
-		
+		int rr = radius * radius;
+		for (int sy = 0; sy < radius; sy++)
+		{
+			int x = (int)Math.sqrt(rr - sy * sy);
+			// 右下
+			this.drawDot(rx + x, ry + sy);
+			// 右上
+			this.drawDot(rx + x, ry - sy);
+			// 左下
+			this.drawDot(rx - x, ry + sy);
+			// 左上
+			this.drawDot(rx -x, ry - sy);
+		}
+		for (int sx = 0, ex = radius / 2; sx < ex; sx++)
+		{
+			int y = (int)Math.sqrt(rr - sx *sx);
+			// 右下
+			this.drawDot(rx + sx, ry + y);
+			// 右上
+			this.drawDot(rx + sx, ry - y);
+			// 左下
+			this.drawDot(rx - sx, ry + y);
+			// 左上
+			this.drawDot(rx - sx, ry - y);
+		}
 	}
 	
 	public void drawText(int x, int y, String text, Font font)
 	{
-		System.out.println(text);
 		for (int i = 0; i < text.length(); i++)
 		{
 			char chr = text.charAt(i);
-			System.out.println(chr);
 			Symbol symbol = font.getSymbol(chr);
-			for (int ss = 0; ss < symbol.dotMatrix.length; ss++)
-			{
-				System.out.print(symbol.dotMatrix[ss] + " ");
-			}
-			System.out.println();
 			int ty = y;
 			for (int k = 0; k < symbol.dotMatrix.length; k++)
 			{

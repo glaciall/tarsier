@@ -21,8 +21,10 @@ public class BitmapTest
 		Brush brush = new Brush();
 		brush.setColor(0xffff0000);
 		painter.setBrush(brush);
-		painter.drawRect(18, 18, 400, 400);
+		// painter.drawRect(18, 18, 400, 400);
 		painter.drawText(20, 20, "Hello World.", Font.getFamily("System"));
+		painter.drawRect(200, 200, 400, 400);
+		painter.drawCircle(400, 400, 100);
 		bitmap = Image.toBitmap(img);
 		
 		bitmap.output(new File("c:\\test.bmp"));
