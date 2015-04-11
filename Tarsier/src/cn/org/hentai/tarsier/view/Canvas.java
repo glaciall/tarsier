@@ -15,7 +15,11 @@ public class Canvas extends javax.swing.JComponent
 	{
 		try
 		{
-			Image pageSurface = new UIFlowLayout().getImage().toNativeImage();
+			UIFlowLayout div = new UIFlowLayout();
+			Layout layout = new Layout(this.getWidth(), this.getHeight());
+			div.setLayout(layout);
+			
+			Image pageSurface = div.getImage().toNativeImage();
 			g.drawImage(pageSurface, 0, 0, null);
 		}
 		catch(Exception ex)

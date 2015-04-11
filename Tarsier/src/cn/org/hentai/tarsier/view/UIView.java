@@ -3,6 +3,7 @@ package cn.org.hentai.tarsier.view;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.List;
 
 import cn.org.hentai.tarsier.graphic.Bitmap;
 import cn.org.hentai.tarsier.graphic.Image;
@@ -58,8 +59,12 @@ public abstract class UIView
 	// measure
 	protected abstract void onMeasure();
 	
-	
 	// layout
+	public final void setLayout(Layout layout)
+	{
+		this.layout = layout;
+	}
+	
 	protected void onLayout()
 	{
 		// do nothing here
@@ -81,7 +86,7 @@ public abstract class UIView
 		// 如果该元素的clip值为false，则本元素的画布应该要无穷大，大到能够容纳任意位置上的子元素
 		// 或者是单独考虑position为absolute的元素
 		
-		LinkedList<UIView> childs = (LinkedList<UIView>) this.subViews.subList(0, this.subViews.size());
+		List<UIView> childs = (List<UIView>) this.subViews.subList(0, this.subViews.size());
 		Collections.sort(childs, new Comparator<UIView>()
 		{
 			public int compare(UIView view1, UIView view2)
