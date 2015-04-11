@@ -1,8 +1,10 @@
 ﻿package cn.org.hentai.tarsier.font;
 
-public final class SongType extends Font
+import cn.org.hentai.tarsier.graphic.Rect;
+
+public final class FontFamilySystem extends Font
 {
-    protected SongType()
+    protected FontFamilySystem()
     {
         // ...
     }
@@ -15,9 +17,14 @@ public final class SongType extends Font
         return bits;
     }
 
-    public int getWidth()
+    public int getWidthType()
     {
-        return Font.FONT_WIDTH_VARIABLE;
+        return Font.FONT_WIDTH_FIXED;
+    }
+    
+    public Rect measureText(String text)
+    {
+    	return new Rect(text.length() * 12, 12);
     }
 
     private static final byte[] charBits = new byte[]

@@ -1,5 +1,7 @@
 ﻿package cn.org.hentai.tarsier.font;
 
+import cn.org.hentai.tarsier.graphic.Rect;
+
 public abstract class Font
 {
     public static final int FONT_WIDTH_FIXED = 0x01;        // 等宽字体
@@ -7,9 +9,10 @@ public abstract class Font
 
     public static final Font getFamily(String fontName)
     {
-        return new SongType();
+        return new FontFamilySystem();
     }
 
     public abstract byte[] getCharactor(char chr);
-    public abstract int getWidth();
+    public abstract int getWidthType();
+    public abstract Rect measureText(String text);
 }
