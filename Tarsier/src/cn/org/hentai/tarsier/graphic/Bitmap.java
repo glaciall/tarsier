@@ -106,21 +106,21 @@ public final class Bitmap
 	{
 		public static final int BYTES_OF_HEADER = 0x36;
 		
-		public static final HeaderField bfType = new HeaderField(0, 0x02);				// ×ÜÊÇBM
-		public static final HeaderField bfSize = new HeaderField(2, 0x04);				// BMPÍ¼ÏñÎÄ¼şµÄ´óĞ¡
-		public static final HeaderField bfReserved = new HeaderField(6, 0x04);			// ×ÜÎª0£¬±¾¸ÃÊÇbfReserved1ºÍbfReserved2
-		public static final HeaderField bfOffBits = new HeaderField(10, 0x04);			// BMPÍ¼ÏñÊı¾İµÄµØÖ·
-		public static final HeaderField biSize = new HeaderField(14, 0x04);				// ±¾½á¹¹µÄ´óĞ¡£¬¸ù¾İ²»Í¬µÄ²Ù×÷ÏµÍ³¶ø²»Í¬£¬ÔÚWindowsÖĞ£¬´Ë×Ö¶ÎµÄÖµ×ÜÎª28h×Ö½Ú=40×Ö½Ú
-		public static final HeaderField biWidth = new HeaderField(18, 0x04);			// BMPÍ¼ÏñµÄ¿í¶È£¬µ¥Î»ÏñËØ
-		public static final HeaderField biHeight = new HeaderField(22, 0x04);			// ×ÜÎª0
-		public static final HeaderField biPlanes = new HeaderField(26, 0x02);			// ×ÜÎª0
-		public static final HeaderField biBitCount = new HeaderField(28, 0x02);			// BMPÍ¼ÏñµÄÉ«Éî£¬¼´Ò»¸öÏñËØÓÃ¶àÉÙÎ»±íÊ¾£¬³£¼ûÓĞ1¡¢4¡¢8¡¢16¡¢24ºÍ32£¬·Ö±ğ¶ÔÓ¦µ¥É«¡¢16É«¡¢256É«¡¢16Î»¸ß²ÊÉ«¡¢24Î»Õæ²ÊÉ«ºÍ32Î»ÔöÇ¿ĞÍÕæ²ÊÉ«
+		public static final HeaderField bfType = new HeaderField(0, 0x02);				// æ€»æ˜¯BM
+		public static final HeaderField bfSize = new HeaderField(2, 0x04);				// BMPå›¾åƒæ–‡ä»¶çš„å¤§å°
+		public static final HeaderField bfReserved = new HeaderField(6, 0x04);			// æ€»ä¸º0ï¼Œæœ¬è¯¥æ˜¯bfReserved1å’ŒbfReserved2
+		public static final HeaderField bfOffBits = new HeaderField(10, 0x04);			// BMPå›¾åƒæ•°æ®çš„åœ°å€
+		public static final HeaderField biSize = new HeaderField(14, 0x04);				// æœ¬ç»“æ„çš„å¤§å°ï¼Œæ ¹æ®ä¸åŒçš„æ“ä½œç³»ç»Ÿè€Œä¸åŒï¼Œåœ¨Windowsä¸­ï¼Œæ­¤å­—æ®µçš„å€¼æ€»ä¸º28hå­—èŠ‚=40å­—èŠ‚
+		public static final HeaderField biWidth = new HeaderField(18, 0x04);			// BMPå›¾åƒçš„å®½åº¦ï¼Œå•ä½åƒç´ 
+		public static final HeaderField biHeight = new HeaderField(22, 0x04);			// æ€»ä¸º0
+		public static final HeaderField biPlanes = new HeaderField(26, 0x02);			// æ€»ä¸º0
+		public static final HeaderField biBitCount = new HeaderField(28, 0x02);			// BMPå›¾åƒçš„è‰²æ·±ï¼Œå³ä¸€ä¸ªåƒç´ ç”¨å¤šå°‘ä½è¡¨ç¤ºï¼Œå¸¸è§æœ‰1ã€4ã€8ã€16ã€24å’Œ32ï¼Œåˆ†åˆ«å¯¹åº”å•è‰²ã€16è‰²ã€256è‰²ã€16ä½é«˜å½©è‰²ã€24ä½çœŸå½©è‰²å’Œ32ä½å¢å¼ºå‹çœŸå½©è‰²
 		public static final HeaderField biCompression = new HeaderField(30, 0x04);		// ...
-		public static final HeaderField biSizeImage = new HeaderField(34, 0x04);		// BMPÍ¼ÏñÊı¾İ´óĞ¡£¬±ØĞëÊÇ4µÄ±¶Êı£¬Í¼ÏñÊı¾İ´óĞ¡²»ÊÇ4µÄ±¶ÊıÊ±ÓÃ0Ìî³ä²¹×ã
-		public static final HeaderField biXPelsPerMeter = new HeaderField(38, 0x04);	// Ë®Æ½·Ö±æÂÊ£¬µ¥Î»ÏñËØ/m
-		public static final HeaderField biYPelsPerMeter = new HeaderField(42, 0x04);	// ´¹Ö±·Ö±æÂÊ£¬µ¥Î»ÏñËØ/m
-		public static final HeaderField biClrUsed = new HeaderField(46, 0x04);			// BMPÍ¼ÏñÊ¹ÓÃµÄÑÕÉ«£¬0±íÊ¾Ê¹ÓÃÈ«²¿ÑÕÉ«£¬¶ÔÓÚ256É«Î»Í¼À´Ëµ£¬´ËÖµÎª100h=256
-		public static final HeaderField biClrImportant = new HeaderField(50, 0x04);		// ÖØÒªµÄÑÕÉ«Êı£¬´ËÖµÎª0Ê±ËùÓĞÑÕÉ«¶¼ÖØÒª£¬¶ÔÓÚÊ¹ÓÃµ÷É«°åµÄBMPÍ¼ÏñÀ´Ëµ£¬µ±ÏÔ¿¨²»ÄÜ¹»ÏÔÊ¾ËùÓĞÑÕÉ«Ê±£¬´ËÖµ½«¸¨ÖúÇı¶¯³ÌĞòÏÔÊ¾ÑÕÉ«
+		public static final HeaderField biSizeImage = new HeaderField(34, 0x04);		// BMPå›¾åƒæ•°æ®å¤§å°ï¼Œå¿…é¡»æ˜¯4çš„å€æ•°ï¼Œå›¾åƒæ•°æ®å¤§å°ä¸æ˜¯4çš„å€æ•°æ—¶ç”¨0å¡«å……è¡¥è¶³
+		public static final HeaderField biXPelsPerMeter = new HeaderField(38, 0x04);	// æ°´å¹³åˆ†è¾¨ç‡ï¼Œå•ä½åƒç´ /m
+		public static final HeaderField biYPelsPerMeter = new HeaderField(42, 0x04);	// å‚ç›´åˆ†è¾¨ç‡ï¼Œå•ä½åƒç´ /m
+		public static final HeaderField biClrUsed = new HeaderField(46, 0x04);			// BMPå›¾åƒä½¿ç”¨çš„é¢œè‰²ï¼Œ0è¡¨ç¤ºä½¿ç”¨å…¨éƒ¨é¢œè‰²ï¼Œå¯¹äº256è‰²ä½å›¾æ¥è¯´ï¼Œæ­¤å€¼ä¸º100h=256
+		public static final HeaderField biClrImportant = new HeaderField(50, 0x04);		// é‡è¦çš„é¢œè‰²æ•°ï¼Œæ­¤å€¼ä¸º0æ—¶æ‰€æœ‰é¢œè‰²éƒ½é‡è¦ï¼Œå¯¹äºä½¿ç”¨è°ƒè‰²æ¿çš„BMPå›¾åƒæ¥è¯´ï¼Œå½“æ˜¾å¡ä¸èƒ½å¤Ÿæ˜¾ç¤ºæ‰€æœ‰é¢œè‰²æ—¶ï¼Œæ­¤å€¼å°†è¾…åŠ©é©±åŠ¨ç¨‹åºæ˜¾ç¤ºé¢œè‰²
 	}
 	
 	private static class HeaderField

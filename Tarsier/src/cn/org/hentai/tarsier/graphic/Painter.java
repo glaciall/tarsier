@@ -44,13 +44,29 @@ public final class Painter
 		
 	}
 	
-	public void drawImage()
+	public void drawImage(int x, int y, Image img)
 	{
-		
+		// 暂时不想处理超出边界的元素的事情
+		if (img.getWidth() + x > this.image.getWidth()) return;
+		if (img.getHeight() + y > this.image.getHeight()) return;
+		for (int iy= 0, ey = y + img.getHeight(); y < ey; y++, iy++)
+		{
+			for (int ix = 0, ex = x + img.getWidth(); x < ex; x++, ix++)
+			{
+				int color = this.image.getPixel(x, y);
+				color = Painter.mix(img.getPixel(ix, iy), color);
+				this.image.setPixel(x, y, color);
+			}
+		}
 	}
 	
 	public static int argb(int red, int green, int blue, int alpha)
 	{
 		return 0x00;
+	}
+	
+	public static int mix(int frontend, int backend)
+	{
+		return frontend;
 	}
 }

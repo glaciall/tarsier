@@ -6,12 +6,13 @@ import java.util.LinkedList;
 
 import cn.org.hentai.tarsier.graphic.Bitmap;
 import cn.org.hentai.tarsier.graphic.Image;
+import cn.org.hentai.tarsier.graphic.Painter;
 
 public abstract class UIView
 {
 	public Layout layout;
-	protected int indexAtDocument;				// ÔªËØÔÚµ±Ç°ÎÄµµÖĞµÄĞòºÅ
-	protected int indexAtParent;				// ÔªËØÔÚÖ±½Ó¸¸¼¶ÔªËØÖĞµÄĞòÁĞ
+	protected int indexAtDocument;				// å…ƒç´ åœ¨å½“å‰æ–‡æ¡£ä¸­çš„åºå·
+	protected int indexAtParent;				// å…ƒç´ åœ¨ç›´æ¥çˆ¶çº§å…ƒç´ ä¸­çš„åºåˆ—
 	protected int backgroundColor;
 	
 	private float alpha;
@@ -74,18 +75,18 @@ public abstract class UIView
 		this.onMeasure();
 		this.onLayout();
 		this.image.alloc(this.layout.measuredWidth, this.layout.measuredHeight, this.backgroundColor);
-		// ÏÈ»­±¾ÔªËØµÄÍâ¹Û
+		// å…ˆç”»æœ¬å…ƒç´ çš„å¤–è§‚
 		this.onDraw(this.image);
-		// ÔÙ½«×ÓÔªËØµÄÍâ¹Û¸²¸ÇÔÚ×Ô¼ºÉÏÃæ
-		// Èç¹û¸ÃÔªËØµÄclipÖµÎªfalse£¬Ôò±¾ÔªËØµÄ»­²¼Ó¦¸ÃÒªÎŞÇî´ó£¬´óµ½ÄÜ¹»ÈİÄÉÈÎÒâÎ»ÖÃÉÏµÄ×ÓÔªËØ
-		// »òÕßÊÇµ¥¶À¿¼ÂÇpositionÎªabsoluteµÄÔªËØ
+		// å†å°†å­å…ƒç´ çš„å¤–è§‚è¦†ç›–åœ¨è‡ªå·±ä¸Šé¢
+		// å¦‚æœè¯¥å…ƒç´ çš„clipå€¼ä¸ºfalseï¼Œåˆ™æœ¬å…ƒç´ çš„ç”»å¸ƒåº”è¯¥è¦æ— ç©·å¤§ï¼Œå¤§åˆ°èƒ½å¤Ÿå®¹çº³ä»»æ„ä½ç½®ä¸Šçš„å­å…ƒç´ 
+		// æˆ–è€…æ˜¯å•ç‹¬è€ƒè™‘positionä¸ºabsoluteçš„å…ƒç´ 
 		
 		LinkedList<UIView> childs = (LinkedList<UIView>) this.subViews.subList(0, this.subViews.size());
 		Collections.sort(childs, new Comparator<UIView>()
 		{
 			public int compare(UIView view1, UIView view2)
 			{
-				// Èç¹ûzIndexÏàÍ¬£¬ÔòºóÒ»¸öÔªËØµÄ²ã¼¶Òª¸ßÓÚÇ°Ò»¸öÔªËØ
+				// å¦‚æœzIndexç›¸åŒï¼Œåˆ™åä¸€ä¸ªå…ƒç´ çš„å±‚çº§è¦é«˜äºå‰ä¸€ä¸ªå…ƒç´ 
 				if (view1.layout.zIndex == view2.layout.zIndex)
 				{
 					return view1.indexAtParent - view2.indexAtParent;
@@ -94,9 +95,13 @@ public abstract class UIView
 			}
 		});
 		
-		for (int i = 0; i < 0; i++)
+		// å°†å­å…ƒç´ ç”»åœ¨å½“å‰ç”»å¸ƒçš„ä¸Šé¢
+		for (int i = 0; i < childs.size(); i++)
 		{
-			
+			UIView child = childs.get(i);
+			Image img = child.getImage();
+			Painter painter = this.image.getPainter();
+			painter.drawImage(child.layout.x, child.layout.y, img);
 		}
 		
 		return this.image;

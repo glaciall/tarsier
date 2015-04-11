@@ -44,12 +44,12 @@ public final class TestWindow extends JFrame
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Tarsier - Explore the World");
-		// 真TM全屏
+		// 鐪烼M鍏ㄥ睆
 		// GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(window);
 		
 		setVisible(true);
 		
-		// Insets in = getInsets();			// 获取窗口位置
+		// Insets in = getInsets();			// 鑾峰彇绐楀彛浣嶇疆
 		
 		// Rectangle rect = getRootPane().getBounds();
 		// System.out.println(rect.width + "," + rect.height);

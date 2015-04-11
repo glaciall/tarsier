@@ -58,6 +58,19 @@ public final class Image
 		return this.painter;
 	}
 	
+	public void traverse(ITraverser traverser)
+	{
+		for (int i = 0; i < this.dots.length; i++)
+		{
+			traverser.execute(this, i);
+		}
+	}
+	
+	public static interface ITraverser
+	{
+		public void execute(Image image, int index);
+	}
+	
 	public Image clip(int x, int y, int width, int height)
 	{
 		Image img = new Image();

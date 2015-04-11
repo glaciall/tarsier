@@ -11,13 +11,12 @@ public class Layout
 	protected int measuredHeight;
 	
 	public int left;
-	protected int offsetLeft;
 	public int top;
-	protected int offsetTop;
 	public int right;
-	protected int offsetRight;
 	public int bottom;
-	protected int offsetBottom;
+	
+	protected int x;
+	protected int y;
 	
 	public int visibility;		// hidden,visible
 	public int display;			// none,block,inline

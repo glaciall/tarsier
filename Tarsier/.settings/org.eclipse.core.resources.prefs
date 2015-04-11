@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/cn/org/hentai/tarsier/script/Scripting.java=UTF-8
+encoding//src/cn/org/hentai/tarsier/script/instructions/Add.java=UTF-8
+encoding//src/cn/org/hentai/tarsier/script/instructions/AddNAssign.java=UTF-8
+encoding//src/cn/org/hentai/tarsier/script/instructions/Equals.java=UTF-8
+encoding//src/cn/org/hentai/tarsier/script/statements/ForStatement.java=UTF-8
+encoding//src/cn/org/hentai/tarsier/script/vars/JsRef.java=UTF-8
+encoding//src/cn/org/hentai/tarsier/script/vars/VarFactory.java=UTF-8
+encoding/<project>=UTF-8
