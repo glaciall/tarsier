@@ -9,12 +9,12 @@ public final class FontFamilySystem extends Font
         // ...
     }
 
-    public byte[] getCharactor(char chr)
+    public Symbol getSymbol(char chr, int size, boolean italic, boolean bold)
     {
         if (chr < 0x20 || chr > 0x7e) chr = 0x3f;
         byte[] bits = new byte[12];
-        System.arraycopy(charBits, chr - 0x20, bits, 0, 12);
-        return bits;
+        System.arraycopy(charBits, (chr - 0x20) * 12, bits, 0, 12);
+        return new Symbol(6, bits);
     }
 
     public int getWidthType()
