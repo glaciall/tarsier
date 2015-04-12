@@ -11,14 +11,24 @@ import cn.org.hentai.tarsier.graphic.Painter;
 
 public abstract class UIView
 {
+	public static final int WRAP_CONTENT = -1;
+	public static final int FILL_PARENT = -2;
+	public static final int FILL_REST = -3;
+	
 	public Layout layout;
 	protected int indexAtDocument;				// 元素在当前文档中的序号
 	protected int indexAtParent;				// 元素在直接父级元素中的序列
+	
+	private AttributeSet borderWidth;
+	private AttributeSet borderColor;
 	protected int backgroundColor;
 	
 	private float alpha;
 	private float scale;
 	private boolean clip;
+	
+	private String innerText;
+	private String innerHTML;
 	
 	protected UIView parentView;
 	protected LinkedList<UIView> subViews;
@@ -35,6 +45,7 @@ public abstract class UIView
 		this.parentView = null;
 		this.invalidated = true;
 		this.layout = new Layout();
+		this.backgroundColor = 0x00000000;
 		this.subViews = new LinkedList<UIView>();
 	}
 	
@@ -57,7 +68,14 @@ public abstract class UIView
 	}
 	
 	// measure
-	protected abstract void onMeasure();
+	protected abstract void onMeasure(int width, int height);
+	
+	protected void reportDimension(int width, int height)
+	{
+		if (width < 0 || height < 0) return;
+		this.layout.measuredWidth = width;
+		this.layout.measuredHeight = height;
+	}
 	
 	// layout
 	public final void setLayout(Layout layout)
@@ -73,15 +91,16 @@ public abstract class UIView
 	// graphics
 	protected abstract void onDraw(Image image);
 	
+	private final void drawBorder()
+	{
+		if (null == this.borderColor) return;
+		if (null == this.borderWidth) return;
+		
+	}
+	
 	public final Image getImage()
 	{
 		if (!this.invalidated) return this.image;
-		// measure, layout and draw
-		this.onMeasure();
-		this.onLayout();
-		this.image.alloc(this.layout.measuredWidth, this.layout.measuredHeight, this.backgroundColor);
-		// 先画本元素的外观
-		this.onDraw(this.image);
 		// 再将子元素的外观覆盖在自己上面
 		// 如果该元素的clip值为false，则本元素的画布应该要无穷大，大到能够容纳任意位置上的子元素
 		// 或者是单独考虑position为absolute的元素
@@ -99,6 +118,17 @@ public abstract class UIView
 				return view1.layout.zIndex - view2.layout.zIndex;
 			}
 		});
+		System.out.println("xxxxxxxxxxxxxxxxxx");
+		// TODO: 有点点问题，流程上有点乱，明天再研究
+		// measure, layout and draw
+		int width = this.layout.width;
+		int height = this.layout.height;
+		this.onMeasure(width, height);
+		this.onLayout();
+		this.image.alloc(this.layout.measuredWidth, this.layout.measuredHeight, this.backgroundColor);
+		// 先画本元素的外观
+		this.drawBorder();
+		this.onDraw(this.image);
 		
 		// 将子元素画在当前画布的上面
 		for (int i = 0; i < childs.size(); i++)
@@ -108,6 +138,8 @@ public abstract class UIView
 			Painter painter = this.image.getPainter();
 			painter.drawImage(child.layout.x, child.layout.y, img);
 		}
+		
+		this.invalidated = false;
 		
 		return this.image;
 	}

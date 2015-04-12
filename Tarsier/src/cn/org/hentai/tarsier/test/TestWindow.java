@@ -2,6 +2,7 @@ package cn.org.hentai.tarsier.test;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
@@ -34,12 +35,14 @@ public final class TestWindow extends JFrame
 	private void initWindow()
 	{
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setMinimumSize(new Dimension(800, 600));
 		// window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new GridLayout(1, 1));
 		
 		Canvas canvas = new Canvas();
 		canvas.setSize(400, 400);
+		canvas.setBackground(Color.WHITE);
 		contentPane.add(canvas);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

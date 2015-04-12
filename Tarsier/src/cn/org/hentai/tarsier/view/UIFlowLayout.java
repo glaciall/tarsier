@@ -13,10 +13,9 @@ public class UIFlowLayout extends UIView
 	}
 	
 	@Override
-	protected void onMeasure()
+	protected void onMeasure(int width, int height)
 	{
-		this.layout.measuredWidth = this.layout.width;
-		this.layout.measuredHeight = this.layout.height;
+		this.reportDimension(width, height);
 	}
 
 	@Override
@@ -32,6 +31,6 @@ public class UIFlowLayout extends UIView
 		brush.color = 0xffff0000;
 		Painter painter = image.getPainter();
 		painter.setBrush(brush);
-		painter.drawText(0, 0, "Hello Tarsier", Font.getFamily("System"));
+		painter.drawText(this.layout.measuredWidth / 2, this.layout.measuredHeight / 2, "Hello Tarsier", Font.getFamily("System"));
 	}
 }
