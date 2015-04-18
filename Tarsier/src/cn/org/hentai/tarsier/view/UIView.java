@@ -91,7 +91,7 @@ public abstract class UIView
 	// graphics
 	protected abstract void onDraw(Image image);
 	
-	private final void drawBorder()
+	protected void drawBorder()
 	{
 		if (null == this.borderColor) return;
 		if (null == this.borderWidth) return;
@@ -118,8 +118,7 @@ public abstract class UIView
 				return view1.layout.zIndex - view2.layout.zIndex;
 			}
 		});
-		System.out.println("xxxxxxxxxxxxxxxxxx");
-		// TODO: 有点点问题，流程上有点乱，明天再研究
+		// TODO: 好像有点点问题，流程上有点乱，以后再说
 		// measure, layout and draw
 		int width = this.layout.width;
 		int height = this.layout.height;
