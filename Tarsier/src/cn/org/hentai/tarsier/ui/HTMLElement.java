@@ -73,9 +73,11 @@ public abstract class HTMLElement
 	
 	// 元素表现层相关
 	public abstract UIView getContentView();
-	public UIView getWrappperView()
+	public UIView getWrapperView()
 	{
-		return this.getContentView();
+		UIView view = this.getContentView();
+		view.setLayout(this.layout);
+		return view;
 	}
 	
 	// 布局属性相关

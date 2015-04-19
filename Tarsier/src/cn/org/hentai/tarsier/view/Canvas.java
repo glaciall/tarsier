@@ -8,6 +8,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import cn.org.hentai.tarsier.ui.Div;
+
 public class Canvas extends javax.swing.JComponent
 {
 	@Override
@@ -15,11 +17,10 @@ public class Canvas extends javax.swing.JComponent
 	{
 		try
 		{
-			UIFlowLayout div = new UIFlowLayout();
-			Layout layout = new Layout(this.getWidth(), this.getHeight());
-			div.setLayout(layout);
+			Div div = new Div();
+			div.setWidth(this.getWidth()).setHeight(this.getHeight());
 			
-			Image pageSurface = div.getImage().toNativeImage();
+			Image pageSurface = div.getWrapperView().getImage().toNativeImage();
 			g.drawImage(pageSurface, 0, 0, null);
 		}
 		catch(Exception ex)
