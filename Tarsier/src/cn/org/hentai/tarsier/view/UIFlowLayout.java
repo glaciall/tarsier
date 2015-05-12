@@ -15,7 +15,6 @@ public class UIFlowLayout extends UIView
 	@Override
 	protected void onMeasure(int width, int height)
 	{
-		
 		this.reportDimension(width, height);
 	}
 
