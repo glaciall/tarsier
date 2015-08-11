@@ -8,7 +8,6 @@ import java.util.Stack;
 
 import cn.org.hentai.tarsier.script.*;
 import cn.org.hentai.tarsier.script.instructions.*;
-import cn.org.hentai.tarsier.script.expressions.*;
 import cn.org.hentai.tarsier.script.statements.*;
 import cn.org.hentai.tarsier.script.vars.*;
 
