@@ -130,7 +130,7 @@ public final class Painter
 		}
 	}
 	
-	public static int argb(int red, int green, int blue, int alpha)
+	public static int argb(int alpha, int red, int green, int blue)
 	{
 		return 0x00;
 	}
