@@ -1,9 +1,12 @@
 package cn.org.hentai.tarsier.graphic;
 
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
 
 public final class Image
 {
@@ -111,5 +114,16 @@ public final class Image
 		Image.toBitmap(copy).output(baos);
 		ByteArrayInputStream cacheImage = new ByteArrayInputStream(baos.toByteArray());
 		return ImageIO.read(cacheImage);
+	}
+	
+	// TODO: 从压缩图片流还原到点阵图
+	public static Image fromNativeImage(InputStream reader) throws Exception
+	{
+		BufferedImage img = ImageIO.read(reader);
+		ByteArrayOutputStream writer = new ByteArrayOutputStream(img.getWidth() * img.getHeight() * 4);
+		ImageIO.write(img, "BMP", ImageIO.createImageOutputStream(writer));
+		
+		// TODO: 还没有定义转换的方法呢
+		return null;
 	}
 }
