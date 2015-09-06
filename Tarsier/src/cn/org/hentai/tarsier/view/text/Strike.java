@@ -13,7 +13,7 @@ public class Strike extends Text
 		super.onDraw(image);
 		Painter painter = image.getPainter();
 		Brush brush = new Brush();
-		brush.setColor(0xff000000);
+		brush.setColor(this.getTextColor());
 		painter.setBrush(brush);
 		painter.drawLine(0, this.layout.height / 2, this.layout.width, this.layout.height / 2);
 	}

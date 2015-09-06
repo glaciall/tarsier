@@ -42,6 +42,26 @@ public class Text extends UIView
 		this.fontFamily = familyName;
 	}
 	
+	public int getFontSize()
+	{
+		return this.fontSize;
+	}
+	
+	public int getTextColor()
+	{
+		return this.textColor;
+	}
+	
+	public String getText()
+	{
+		return this.text;
+	}
+	
+	public String getFontFamily()
+	{
+		return this.fontFamily;
+	}
+	
 	@Override
 	protected void onDraw(Image image)
 	{
