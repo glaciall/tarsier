@@ -98,6 +98,11 @@ public abstract class UIView
 		
 	}
 	
+	protected void drawBackground()
+	{
+		// ...
+	}
+	
 	public final Image getImage()
 	{
 		if (!this.invalidated) return this.image;
@@ -126,6 +131,7 @@ public abstract class UIView
 		this.onLayout();
 		this.image.alloc(this.layout.measuredWidth, this.layout.measuredHeight, this.backgroundColor);
 		// 先画本元素的外观
+		this.drawBackground();
 		this.drawBorder();
 		this.onDraw(this.image);
 		

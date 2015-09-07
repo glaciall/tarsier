@@ -2,24 +2,21 @@ package cn.org.hentai.tarsier.view;
 
 public class AttributeSet
 {
-	public int top;
-	public int right;
-	public int bottom;
-	public int left;
-	
-	public AttributeSet(int value)
+	// 
+	public static Attribute parse(String attr)
 	{
-		this.top = value;
-		this.right = value;
-		this.bottom = value;
-		this.left = value;
+		return null;
 	}
 	
-	public AttributeSet(int t, int r, int b, int l)
+	public static class Attribute
 	{
-		this.top = t;
-		this.right = r;
-		this.bottom = b;
-		this.left = l;
+		protected String name;
+		protected Value value;
+		protected Value defaultValue;
+	}
+	
+	protected static class Value
+	{
+		Object val;
 	}
 }
