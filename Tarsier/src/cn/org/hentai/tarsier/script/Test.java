@@ -119,7 +119,7 @@ public class Test
         // script = "var i = 1 + 3 - 4 * 5 + 3;";
         // script = "for (var i = 0; i < 100 && i > 1; i = i + 1) { i = i; }";
         script = "var s = 0;";
-        script += "for (var i = 0; i < 100; i++) { s += i; }";
+        script += "for (var i = 0; i < 100; i++) { s += i + 2; }";
         script += "debug(s);";
         // script = "var s = 1 < 3;";
         // script = "debug(112233, 1222, 3333, 4444, 5555, 'aaaaaaaa');";
