@@ -12,12 +12,12 @@ public class Debug extends JsFunction
             Var var = (Var)vars[i];
             if (var == null) System.out.println(var);
             if (var.getType() == Var.VAR_NUMBER)
-                System.out.println(var.getNumberValue());
+                System.err.println(var.getNumberValue());
             else if (var.getType() == Var.VAR_STRING)
-                System.out.println(var.getStringValue());
+                System.err.println(var.getStringValue());
             else if (var.getType() == Var.VAR_BOOLEAN)
-                System.out.println(var.getBooleanValue());
-            else System.out.println(vars[i]);
+                System.err.println(var.getBooleanValue());
+            else System.err.println(vars[i]);
         }
         return null;
     }

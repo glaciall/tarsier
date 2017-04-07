@@ -106,7 +106,7 @@ public class Test
         // TODO: 负号怎么处理？
         String script = "var iaaaa = (3 + (3 + 1 * (7 * 9))) * 7 * 5;var s = 0;";
         // script = "var i = 'aaaaaaaaaaa';";
-        script += "for (var i = 0; i < 100; i++)";
+        script += "for (var i = 0; i < 100000; i++)";
         script += "{";
         script += "     s += i;";
         script += "     if (s ==                100) break;";
@@ -119,7 +119,7 @@ public class Test
         // script = "var i = 1 + 3 - 4 * 5 + 3;";
         // script = "for (var i = 0; i < 100 && i > 1; i = i + 1) { i = i; }";
         script = "var s = 0;";
-        script += "for (var i = 0; i < 100; i++) { s += i + 2; }";
+        script += "for (var i = 0; i < 10000000; i++) { s += i + 2; }";
         script += "debug(s);";
         // script = "var s = 1 < 3;";
         // script = "debug(112233, 1222, 3333, 4444, 5555, 'aaaaaaaa');";
